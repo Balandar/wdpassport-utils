@@ -67,6 +67,8 @@ def cipher_id_to_str(cipher_id):
 		return "AES_256_CBC";
 	elif cipher_id == 0x28:
 		return "AES_256_XTS";
+	elif cipher_id == 49:
+		return "Full Disk Encryption";
 	elif cipher_id == 0x30:
 		return "Full Disk Encryption";
 	else:
@@ -186,7 +188,7 @@ def unlock():
 		pwblen = 16;
 	elif cipher_id == 0x20 or cipher_id == 0x22 or cipher_id == 0x28:
 		pwblen = 32;
-	elif cipher_id == 0x30:
+	elif cipher_id == 0x30 or cipher_id == 49:
 		pwblen = 32;
 	else:
 		print fail("Unsupported cipher %s" % cipher_id)
@@ -231,7 +233,7 @@ def change_password():
 		pwblen = 16;
 	elif cipher_id == 0x20 or cipher_id == 0x22 or cipher_id == 0x28:
 		pwblen = 32;
-	elif cipher_id == 0x30:
+	elif cipher_id == 0x30 or cipher_id == 49:
 		pwblen = 32;
 	else:
 		print fail("Unsupported cipher %s" % cipher_id)
@@ -304,7 +306,7 @@ def secure_erase(cipher_id = 0):
 	elif cipher_id == 0x20 or cipher_id == 0x22 or cipher_id == 0x28:
 		pwblen = 32;
 		pw_block[3] = 0x01
-	elif cipher_id == 0x30:
+	elif cipher_id == 0x30 or cipher_id == 49:
 		pwblen = 32;
 	#	pw_block[3] = 0x00
 	else:
@@ -426,3 +428,4 @@ def main(argv):
 
 if __name__ == "__main__":
 	main(sys.argv[1:])
+	
