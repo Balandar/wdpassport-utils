@@ -17,7 +17,15 @@ sudo pip install py_sg
 
 <h1> Usage </h1>
 
-Run script as root. 
+Run script as root: E.G.
+```sudo ./wdpassport-utils.py -h```
+
+To unlock:
+```sudo ./wdpassport-utils.py -u```
+
+To mount:
+```sudo ./wdpassport-utils.py -m```
+
 
 There are few options:
 ```
